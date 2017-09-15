@@ -20,11 +20,34 @@ public class ReversePolishCalc {
 
         // 3. write the algorithm
         for(int i = 0; i < tokens.length; ++i) {
-
-            // calls to push() and pop() and do the math here
-            //take the stack and if !number is found, pop the previous two operands
-            //apply that !number to the two operands
-            //apply this value back to the stack
+            // calls to push() and pop() and do the math here;
+            if (int i == "+" || "-" || "*" || "/") {
+                push(i);
+            }
+            if else ( n == "+") {
+                String operand1 = pop(int topofstack);
+                String operand2 = pop(int topofstack);
+                int results = operand1 + operand2;
+                push(number, d);
+            }
+            else if (i == "-") {
+                String operand1 = pop(int topofstack);
+                String operand2 = pop(int topofstack);
+                int results = operand1 - operand2;
+                push(number, d);
+            }
+            else if (i == "*") {
+                String operand1 = pop(int topofstack);
+                String operand2 = pop(int topofstack);
+                int results = operand1 * operand2;
+                push(number, d);
+            }
+            else if (i == "/") {
+                String operand1 = pop(int topofstack);
+                String operand2 = pop(int topofstack);
+                int results = operand1 / operand2;
+                push(number, d);
+            }
         }
 
         // 4. return the result
