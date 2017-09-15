@@ -2,7 +2,7 @@
 public class ReversePolishCalc {
 
     // You'll need a variable here to keep track of the top of the stack
-    int topStackInx = 0;
+    int topStackIdx = -1;
 
     // The array of the input string split up
     private String[] tokens;
@@ -18,35 +18,34 @@ public class ReversePolishCalc {
         // 2. Allocate a stack as big as the number of tokens
         stack = new String[tokens.length];
 
+        double operand1;
+        double operand2;
+        double results;
         // 3. write the algorithm
-        for(int i = 0; i < tokens.length; ++i) {
+        for (int i = 0; i < tokens.length; ++i) {
             // calls to push() and pop() and do the math here;
-            if (int i == "+" || "-" || "*" || "/") {
-                push(i);
-            }
-            if else ( n == "+") {
-                String operand1 = pop(int topofstack);
-                String operand2 = pop(int topofstack);
-                int results = operand1 + operand2;
-                push(number, d);
-            }
-            else if (i == "-") {
-                String operand1 = pop(int topofstack);
-                String operand2 = pop(int topofstack);
-                int results = operand1 - operand2;
-                push(number, d);
-            }
-            else if (i == "*") {
-                String operand1 = pop(int topofstack);
-                String operand2 = pop(int topofstack);
-                int results = operand1 * operand2;
-                push(number, d);
-            }
-            else if (i == "/") {
-                String operand1 = pop(int topofstack);
-                String operand2 = pop(int topofstack);
-                int results = operand1 / operand2;
-                push(number, d);
+            if (!tokens[i].equals("+") && !tokens[i].equals("-") && !tokens[i].equals("*") && !tokens[i].equals("/")) {
+                push(tokens[i]);
+            } else if (tokens[i].equals("+")) {
+                operand1 = pop();
+                operand2 = pop();
+                results = operand1 + operand2;
+                push(results);
+            } else if (tokens[i].equals("-")) {
+                operand1 = pop();
+                operand2 = pop();
+                results = operand2 - operand1;
+                push(results);
+            } else if (tokens[i].equals("*")) {
+                operand1 = pop();
+                operand2 = pop();
+                results = operand1 * operand2;
+                push(results);
+            } else if (tokens[i].equals("/")) {
+                operand1 = pop();
+                operand2 = pop();
+                results = operand2 / operand1;
+                push(results);
             }
         }
 
@@ -56,16 +55,16 @@ public class ReversePolishCalc {
 
     private void push(String number) {
         // push on the stack
-        stack[topStackInx++] = number;
+        stack[++topStackIdx] = number;
     }
 
     private void push(double d) {
         // change the double to a string and then push it on the stack
-         stack[topStackInx++] = String.valueOf(d);
+        stack[++topStackIdx] = String.valueOf(d);
     }
 
     private double pop() {
         // remove the string from the top of the stack and convert it to a double and return it
-        return Double.valueOf(stack[topStackInx--]);
+        return Double.valueOf(stack[topStackIdx--]);
     }
 }
