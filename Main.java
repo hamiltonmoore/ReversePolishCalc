@@ -1,8 +1,4 @@
-/**
- * Test Driven Development (TDD)
- * Write your tests first and watch them fail.
- * Then write the algorithm and watch the tests pass.
- */
+
 public class Main {
     public static void main(String[] args) {
         ReversePolishCalc rpc = new ReversePolishCalc();
@@ -12,7 +8,6 @@ public class Main {
         double actualResult = rpc.calculate(rpnExpression);
         checkResult(rpnExpression, expectedResult, actualResult);
 
-        // Write tests for the other operators (-, *, /)
         String rpmExpression = "15,7,11,-,-";
         expectedResult = 19;
         actualResult = rpc.calculate(rpmExpression);
@@ -33,7 +28,6 @@ public class Main {
         actualResult = rpc.calculate(rpmExpression);
         checkResult(rpmExpression, expectedResult, actualResult);
 
-//       Uncomment this test which has many operators
         rpnExpression = "5,1,2,+,4,*,+,3,-";
         expectedResult = 14.0;
         actualResult = rpc.calculate(rpnExpression);
